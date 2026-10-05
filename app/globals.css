@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fbf8f2;
+  color: #3f4742;
+}
+
+::selection {
+  background: #e7f1ea;
+  color: #123028;
+}
+
+.rule {
+  background-image: linear-gradient(90deg, #1f4d3d 0 28px, #e5d7bf 28px);
+  height: 2px;
+}

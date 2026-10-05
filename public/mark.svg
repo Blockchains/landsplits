@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="LandSplits mark">
+  <rect x="6" y="8" width="52" height="48" rx="2" stroke="#E7F1EA" stroke-width="2"/>
+  <path d="M10 14h28v18H10z" stroke="#FBF8F2" stroke-width="1.6"/>
+  <path d="M38 14h16v36H38z" stroke="#FBF8F2" stroke-width="1.6"/>
+  <path d="M10 32h28v18H10z" stroke="#FBF8F2" stroke-width="1.6"/>
+  <circle cx="10" cy="14" r="1.4" fill="#E5D7BF"/>
+  <circle cx="38" cy="14" r="1.4" fill="#E5D7BF"/>
+  <circle cx="54" cy="14" r="1.4" fill="#E5D7BF"/>
+  <circle cx="10" cy="32" r="1.4" fill="#E5D7BF"/>
+  <circle cx="38" cy="32" r="1.4" fill="#E5D7BF"/>
+  <circle cx="10" cy="50" r="1.4" fill="#E5D7BF"/>
+  <circle cx="38" cy="50" r="1.4" fill="#E5D7BF"/>
+  <circle cx="54" cy="50" r="1.4" fill="#E5D7BF"/>
+</svg>
