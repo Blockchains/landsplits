@@ -13,7 +13,6 @@ import { getJurisdiction, jurisdictions, relatedCities, topics } from "@/lib/dat
 
 type Props = { params: Promise<{ state: string; city: string }> };
 
-export const revalidate = 60 * 60 * 24 * 7;
 export const dynamicParams = false;
 
 export function generateStaticParams() {

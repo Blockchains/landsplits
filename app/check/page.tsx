@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -12,6 +12,15 @@ const objectives = [
   ["FAMILY_HOUSING", "Create family housing"],
   ["RESEARCH", "Research only"]
 ];
+
+function Field({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <label className="block text-sm text-charcoal-800">
+      <span className="mb-1 block font-semibold">{label}</span>
+      {children}
+    </label>
+  );
+}
 
 function CheckForm() {
   const params = useSearchParams();
