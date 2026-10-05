@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { jurisdictions, regions, topics } from "@/lib/data";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://landsplits.com";
   const staticRoutes = ["", "/states", "/canada", "/how-it-works", "/professionals", "/about", "/disclaimer", "/editorial-policy", "/data-sources"].map(
