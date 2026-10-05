@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AddressForm } from "@/components/AddressForm";
+import { CityFinder } from "@/components/CityFinder";
 import { citiesInRegion, jurisdictions, regions } from "@/lib/data";
 
 const hubs = [
@@ -74,6 +75,17 @@ export default function HomePage() {
           <RegionColumn title="Canada" items={ca} />
         </div>
       </section>
+
+      <CityFinder
+        cities={jurisdictions.map((city) => ({
+          cityName: city.cityName,
+          regionName: city.regionName,
+          regionSlug: city.regionSlug,
+          citySlug: city.citySlug,
+          countryName: city.countryName,
+          legislationName: city.legislationName
+        }))}
+      />
 
       <section className="bg-sand-100">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-3">

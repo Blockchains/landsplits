@@ -26,6 +26,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: "1"
+      - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

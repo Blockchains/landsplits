@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useMemo, useState, type ReactNode } from "react";
-import { useSearchParams } from "next/navigation";
+import { jurisdictions } from "@/lib/data";
+import Link from "next/link";
 import { Suspense } from "react";
 
 const objectives = [
@@ -31,7 +32,11 @@ function CheckForm() {
   const [objective, setObjective] = useState("CREATE_SEPARATE_LOT");
   const [submitted, setSubmitted] = useState(false);
 
-  const california = region.toLowerCase().includes("california");
+  const match = jurisdictions.find((item) => {
+    const cityHit = city.trim().toLowerCase() === item.cityName.toLowerCase();
+    const regionHit = region.trim().toLowerCase() === item.regionName.toLowerCase();
+    return cityHit && (regionHit || region.trim() === "");
+  });
   const sessionId = useMemo(() => Math.random().toString(36).slice(2, 10), []);
 
   function onSubmit(event: FormEvent) {
@@ -48,7 +53,7 @@ function CheckForm() {
         Session {sessionId}.
       </p>
 
-      {california ? (
+      {region.toLowerCase().includes("california") || match?.regionSlug === "california" ? (
         <aside className="mt-6 border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-800">
           <strong className="text-charcoal-950">This property context is California.</strong> You can use the
           SB 9 specialist screen if the situation may fit that pathway, or stay here for a general subdivision assessment.
@@ -100,9 +105,17 @@ function CheckForm() {
           <h2 className="mt-2 font-serif text-3xl text-charcoal-950">This address warrants a feasibility review, not a yes.</h2>
           <p className="mt-3 text-sm leading-6 text-charcoal-700">
             We can place {address} in {city}, {region} against a local planning jurisdiction and the objective you selected.
+            {match
+              ? ` The directory already has a ${match.cityName} guide under ${match.subdivisionApprovalAuthority}.`
+              : " This city is not in the published set yet, so the screen stays manual."}{" "}
             Before anyone relies on that, a qualified review still has to confirm zoning, dimensions, access, title, easements,
             utilities, and the local approval path.
           </p>
+          {match ? (
+            <Link href={`/${match.regionSlug}/${match.citySlug}`} className="mt-4 inline-block text-sm font-semibold text-forest-800 underline underline-offset-4">
+              Open the {match.cityName} subdivision guide
+            </Link>
+          ) : null}
           <dl className="mt-5 grid gap-3 text-sm sm:grid-cols-2">
             <div className="bg-sand-50 p-3"><dt className="text-charcoal-500">Relationship</dt><dd>{relationship.replaceAll("_", " ")}</dd></div>
             <div className="bg-sand-50 p-3"><dt className="text-charcoal-500">Objective</dt><dd>{objective.replaceAll("_", " ")}</dd></div>
