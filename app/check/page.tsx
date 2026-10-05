@@ -3,6 +3,7 @@
 import { FormEvent, useMemo, useState, type ReactNode } from "react";
 import { jurisdictions } from "@/lib/data";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 const objectives = [
