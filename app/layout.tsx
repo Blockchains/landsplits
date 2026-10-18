@@ -26,9 +26,23 @@ export const metadata: Metadata = {
   description:
     "Search subdivision rules, minimum lot sizes, utility requirements, approval processes, and local professionals across the United States and Canada.",
   openGraph: {
-    title: "LandSplits",
-    description: "Find out what your land could become.",
-    type: "website"
+    title: "LandSplits.com",
+    description: "Subdivision guidance, city by city, across the United States and Canada.",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "LandSplits.com" }]
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" }
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "192x192" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LandSplits.com",
+    description: "Subdivision guidance, city by city.",
+    images: ["/og.png"]
   }
 };
 

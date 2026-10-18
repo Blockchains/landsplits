@@ -32,11 +32,11 @@ export default function HomePage() {
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-sand-200">North American land subdivision directory</p>
             <h1 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-white sm:text-6xl">
-              Find out what your land could become
+              LandSplits.com
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-sand-100 sm:text-lg">
-              Explore local subdivision rules, minimum lot sizes, approval processes, utility considerations,
-              and professional support for cities across the United States and Canada.
+              Subdivision guidance, city by city. Explore local rules, minimum lot sizes, approval processes,
+              utility considerations, and professional support across the United States and Canada.
             </p>
             <div className="mt-8 max-w-xl rounded-sm bg-sand-50 p-3 text-charcoal-950">
               <AddressForm />

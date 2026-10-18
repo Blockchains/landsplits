@@ -9,6 +9,7 @@ import { FaqList } from "@/components/FaqList";
 import { JsonLd } from "@/components/JsonLd";
 import { StickyAddressBar } from "@/components/StickyAddressBar";
 import { cityFaqs, cityIntro, costRows, processSteps, requirementCards } from "@/lib/content";
+import { expandedFaqs, longNarrative } from "@/lib/expansion";
 import { getJurisdiction, jurisdictions, relatedCities, topics } from "@/lib/data";
 
 type Props = { params: Promise<{ state: string; city: string }> };
@@ -40,8 +41,9 @@ export default async function CityPage({ params }: Props) {
   const { state, city: citySlug } = await params;
   const city = getJurisdiction(state, citySlug);
   if (!city) notFound();
-  const faqs = cityFaqs(city);
+  const faqs = [...cityFaqs(city), ...expandedFaqs(city)];
   const nearby = relatedCities(city);
+  const narrative = longNarrative(city);
 
   return (
     <>
@@ -83,6 +85,9 @@ export default async function CityPage({ params }: Props) {
             <section>
               <h2 className="font-serif text-3xl text-charcoal-950">Can you subdivide a lot in {city.cityName}?</h2>
               <p className="mt-4 max-w-prose text-base leading-7 text-charcoal-700">{cityIntro(city)}</p>
+              {narrative.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)} className="mt-4 max-w-prose text-base leading-7 text-charcoal-700">{paragraph}</p>
+              ))}
               <p className="mt-4 max-w-prose text-base leading-7 text-charcoal-700">{city.localDifference}</p>
             </section>
 

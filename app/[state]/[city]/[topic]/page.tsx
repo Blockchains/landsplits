@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CaliforniaSb9Alert } from "@/components/CaliforniaSb9Alert";
 import { getJurisdiction, isTopic, jurisdictions, topics, type TopicSlug } from "@/lib/data";
 import { costRows, requirementCards, topicIntro, topicTitle } from "@/lib/content";
+import { longNarrative } from "@/lib/expansion";
 
 type Props = { params: Promise<{ state: string; city: string; topic: string }> };
 
@@ -39,6 +40,9 @@ export default async function TopicPage({ params }: Props) {
         <p className="mt-6 text-xs uppercase tracking-[0.16em] text-forest-800">{topics.find((item) => item.slug === topic)?.label}</p>
         <h1 className="mt-3 font-serif text-4xl text-charcoal-950">{topicTitle(city, topic)}</h1>
         <p className="mt-4 text-base leading-7 text-charcoal-700">{topicIntro(city, topic)}</p>
+        {longNarrative(city).slice(0, 4).map((paragraph) => (
+          <p key={paragraph.slice(0, 40)} className="mt-4 text-base leading-7 text-charcoal-700">{paragraph}</p>
+        ))}
         <TopicBody cityName={city.cityName} topic={topic} />
         <p className="mt-8 text-sm text-charcoal-500">
           Part of the <Link className="text-forest-800 underline underline-offset-4" href={`/${city.regionSlug}/${city.citySlug}`}>{city.cityName} subdivision guide</Link>.

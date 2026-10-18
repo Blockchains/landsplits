@@ -1,3 +1,5 @@
+import { extraCities } from "./expansion";
+
 export type CountryCode = "US" | "CA";
 
 export type RegionType = "STATE" | "PROVINCE" | "TERRITORY";
@@ -592,7 +594,7 @@ export const jurisdictions: Jurisdiction[] = [
     lastReviewedAt: "2026-10-05",
     published: true
   }
-];
+].concat(extraCities);
 
 export function getRegion(slug: string) {
   return regions.find((region) => region.slug === slug);
