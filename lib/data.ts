@@ -594,7 +594,7 @@ export const jurisdictions: Jurisdiction[] = [
     lastReviewedAt: "2026-10-05",
     published: true
   }
-].concat(extraCities);
+].concat(extraCities) as Jurisdiction[];
 
 export function getRegion(slug: string) {
   return regions.find((region) => region.slug === slug);
